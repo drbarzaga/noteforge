@@ -51,3 +51,4 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **Lucide React** - Icon library
 - **Tailark** - Tailwind CSS components
 - **Better Auth** - Authentication solution
+- **React Hook Form** - Build forms in React using React Hook Form

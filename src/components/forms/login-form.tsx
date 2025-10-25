@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import { toast } from "sonner";
 import { LogoIcon } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -18,6 +18,9 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useLoading } from "@/hooks/useLoading";
+import { signIn } from "@/actions/auth";
+import ButtonLoading from "../button-loading";
 
 const formSchema = z.object({
   email: z
@@ -31,17 +34,32 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
+  const { isLoading, startLoading, stopLoading } = useLoading();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      startLoading();
+      const { email, password } = values;
+      const response = await signIn(email, password);
+      if (response.success) {
+        toast.success(response.message);
+      } else {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Failed to log in.");
+    } finally {
+      stopLoading();
+    }
   }
 
   return (
@@ -127,7 +145,11 @@ export default function LoginForm() {
                       </Button>
                     </div>
                     <FormControl>
-                      <Input placeholder="••••••••" {...field} />
+                      <Input
+                        placeholder="••••••••"
+                        type="password"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -135,7 +157,9 @@ export default function LoginForm() {
               />
             </div>
 
-            <Button className="w-full">Sign In</Button>
+            <Button className="w-full" type="submit" disabled={isLoading}>
+              {isLoading ? <ButtonLoading /> : "Sign In"}
+            </Button>
           </div>
         </div>
 

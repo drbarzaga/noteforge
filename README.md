@@ -49,6 +49,11 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **Motion** - Animation library
 - **next-themes** - Theme switching
 - **Lucide React** - Icon library
-- **Tailark** - Tailwind CSS components
+- **Tailark** - Tailwind CSS components and blocks
 - **Better Auth** - Authentication solution
 - **React Hook Form** - Build forms in React using React Hook Form
+- **Zod** - TypeScript-first schema validation
+- **Drizzle ORM** - Type-safe ORM for SQL databases
+- **PostgreSQL** - Relational database
+- **Resend** - Email delivery service
+- **React Emails** - Build emails with React

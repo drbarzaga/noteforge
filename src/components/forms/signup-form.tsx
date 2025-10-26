@@ -66,7 +66,9 @@ export default function SignUpForm() {
       const { name, email, password } = values;
       const response = await signUp(email, password, name);
       if (response.success) {
-        toast.success(response.message);
+        toast.success(
+          "Account created successfully! Please verify your email."
+        );
       } else {
         toast.error(response.message);
       }

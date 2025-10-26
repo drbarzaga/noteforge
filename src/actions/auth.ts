@@ -40,3 +40,22 @@ export const signUp = async (email: string, password: string, name: string) => {
     };
   }
 };
+
+export const forgetPassword = async (email: string) => {
+  try {
+    await auth.api.forgetPassword({
+      body: {
+        email,
+      },
+    });
+
+    return { success: true, message: "Password reset email sent" };
+  } catch (error) {
+    console.log("Error sending password reset email:", error);
+    return {
+      success: false,
+      message:
+        (error as Error).message || "Failed to send password reset email",
+    };
+  }
+};

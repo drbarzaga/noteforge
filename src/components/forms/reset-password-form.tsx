@@ -22,46 +22,56 @@ import { useForm } from "react-hook-form";
 import { useLoading } from "@/hooks/useLoading";
 import { signIn } from "@/actions/auth";
 import GoogleButton from "../google-button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
-const formSchema = z.object({
-  email: z
-    .email("Email must be a valid email address.")
-    .min(2, "Email must be at least 2 characters.")
-    .max(100, "Email must be at most 100 characters."),
-  password: z
-    .string("Password is required.")
-    .min(6, "Password must be at least 6 characters.")
-    .max(100, "Password must be at most 100 characters."),
-});
+const formSchema = z
+  .object({
+    password: z
+      .string("Password is required.")
+      .min(6, "Password must be at least 6 characters.")
+      .max(100, "Password must be at most 100 characters."),
+    confirmPassword: z
+      .string("Please confirm your password.")
+      .min(6, "Password must be at least 6 characters.")
+      .max(100, "Password must be at most 100 characters."),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match.",
+    path: ["confirmPassword"],
+  });
 
-export default function LoginForm() {
+export default function ResetPasswordForm() {
   const { isLoading, startLoading, stopLoading } = useLoading();
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token") || "";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       startLoading();
-      const { email, password } = values;
-      const response = await signIn(email, password);
-      if (response.success) {
-        toast.success(response.message);
-        router.push("/dashboard");
+      const { error } = await authClient.resetPassword({
+        newPassword: values.password,
+        token,
+      });
+      if (!error) {
+        toast.success("Password has been reset successfully.");
+        router.push("/login");
       } else {
-        toast.error(response.message);
+        toast.error(error.message);
       }
     } catch (error) {
-      console.error("Login error:", error);
-      toast.error("Failed to log in.");
+      console.error("Reset password error:", error);
+      toast.error("An error occurred while resetting the password.");
     } finally {
       stopLoading();
     }
@@ -79,13 +89,11 @@ export default function LoginForm() {
               <LogoIcon />
             </Link>
             <h1 className="mb-1 mt-4 text-xl font-semibold">
-              Sign In to NoteForge
+              Reset Your Password
             </h1>
-            <p className="text-sm">Welcome back! Sign in to continue</p>
-          </div>
-
-          <div className="mt-6 grid grid-cols-1">
-            <GoogleButton text="Sign in with Google" />
+            <p className="text-sm">
+              Enter your new password below to reset it.
+            </p>
           </div>
 
           <hr className="my-4 border-dashed" />
@@ -94,12 +102,16 @@ export default function LoginForm() {
             <div className="space-y-2">
               <FormField
                 control={form.control}
-                name="email"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>New Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@example.com" {...field} />
+                      <Input
+                        placeholder="••••••••"
+                        type="password"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -110,20 +122,10 @@ export default function LoginForm() {
             <div className="space-y-0.5">
               <FormField
                 control={form.control}
-                name="password"
+                name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex items-center justify-between">
-                      <FormLabel>Password</FormLabel>
-                      <Button asChild variant="link" size="sm">
-                        <Link
-                          href="/forgot-password"
-                          className="link intent-info variant-ghost text-sm"
-                        >
-                          Forgot your Password ?
-                        </Link>
-                      </Button>
-                    </div>
+                    <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="••••••••"
@@ -138,7 +140,7 @@ export default function LoginForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Sign In"}
+              {isLoading ? <ButtonLoading /> : "Reset Password"}
             </Button>
           </div>
         </div>

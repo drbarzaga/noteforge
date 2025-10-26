@@ -23,6 +23,7 @@ import { useLoading } from "@/hooks/useLoading";
 import { signIn } from "@/actions/auth";
 import GoogleButton from "../google-button";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 const formSchema = z.object({
   email: z
@@ -67,6 +68,18 @@ export default function LoginForm() {
     }
   }
 
+  async function signInWithGoogle() {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/dashboard",
+      });
+    } catch (error) {
+      console.error("Google Sign-In error:", error);
+      toast.error("Failed to sign in with Google.");
+    }
+  }
+
   return (
     <Form {...form}>
       <form
@@ -85,7 +98,10 @@ export default function LoginForm() {
           </div>
 
           <div className="mt-6 grid grid-cols-1">
-            <GoogleButton text="Sign in with Google" />
+            <GoogleButton
+              text="Sign in with Google"
+              onClick={signInWithGoogle}
+            />
           </div>
 
           <hr className="my-4 border-dashed" />

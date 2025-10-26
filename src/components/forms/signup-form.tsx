@@ -22,6 +22,7 @@ import { useLoading } from "@/hooks/useLoading";
 import { toast } from "sonner";
 import GoogleButton from "../google-button";
 import { signUp } from "@/actions/auth";
+import { authClient } from "@/lib/auth-client";
 
 const formSchema = z
   .object({
@@ -80,6 +81,18 @@ export default function SignUpForm() {
     }
   }
 
+  async function signUpWithGoogle() {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/dashboard",
+      });
+    } catch (error) {
+      console.error("Google Sign-In error:", error);
+      toast.error("Failed to sign up with Google.");
+    }
+  }
+
   return (
     <Form {...form}>
       <form
@@ -100,7 +113,10 @@ export default function SignUpForm() {
           </div>
 
           <div className="mt-6 grid grid-cols-1">
-            <GoogleButton text="Sign up with Google" />
+            <GoogleButton
+              text="Sign up with Google"
+              onClick={signUpWithGoogle}
+            />
           </div>
 
           <hr className="my-4 border-dashed" />

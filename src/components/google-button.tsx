@@ -3,11 +3,12 @@ import { Button } from "./ui/button";
 
 interface GoogleButtonProps {
   text?: string;
+  onClick?: () => void;
 }
 
-export default function GoogleButton({ text }: GoogleButtonProps) {
+export default function GoogleButton({ text, onClick }: GoogleButtonProps) {
   return (
-    <Button type="button" variant="outline">
+    <Button type="button" variant="outline" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="0.98em"

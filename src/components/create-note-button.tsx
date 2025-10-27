@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { NotebookText } from "lucide-react";
 import { Button } from "./ui/button";
-
+import { Spinner } from "@/components/ui/spinner";
 import {
   Dialog,
   DialogContent,
@@ -29,7 +29,6 @@ import { useForm } from "react-hook-form";
 import { useLoading } from "@/hooks/useLoading";
 import { toast } from "sonner";
 import { Input } from "./ui/input";
-import ButtonLoadingSpinner from "./button-loading-spinner";
 import { createNote } from "@/actions/notes";
 import { useRouter } from "next/navigation";
 
@@ -120,7 +119,7 @@ export default function CreateNoteButton({
             />
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? <ButtonLoadingSpinner /> : "Create Note"}
+              {isLoading ? <Spinner /> : "Create Note"}
             </Button>
           </form>
         </Form>

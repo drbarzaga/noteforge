@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { NotebookPen } from "lucide-react";
 
 import {
@@ -27,7 +28,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLoading } from "@/hooks/useLoading";
 import { toast } from "sonner";
-import ButtonLoadingSpinner from "./button-loading-spinner";
 import { createNotebook } from "@/actions/notebooks";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
@@ -124,7 +124,7 @@ export default function CreateNotebookButton() {
               )}
             />
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? <ButtonLoadingSpinner /> : "Create Notebook"}
+              {isLoading ? <Spinner /> : "Create Notebook"}
             </Button>
           </form>
         </Form>

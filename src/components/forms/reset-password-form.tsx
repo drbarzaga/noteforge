@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Logo } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import ButtonLoadingSpinner from "../button-loading-spinner";
+import { Spinner } from "@/components/ui/spinner";
 
 import {
   Form,
@@ -138,7 +138,7 @@ export default function ResetPasswordForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoadingSpinner /> : "Reset Password"}
+              {isLoading ? <Spinner /> : "Reset Password"}
             </Button>
           </div>
         </div>

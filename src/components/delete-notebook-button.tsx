@@ -3,7 +3,7 @@
 import { Trash2 } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-
+import { Spinner } from "@/components/ui/spinner";
 import {
   Dialog,
   DialogClose,
@@ -18,7 +18,6 @@ import { useLoading } from "@/hooks/useLoading";
 import { toast } from "sonner";
 import { deleteNotebook } from "@/actions/notebooks";
 import { useRouter } from "next/navigation";
-import ButtonLoadingSpinner from "./button-loading-spinner";
 
 interface DeleteNotebookButtonProps {
   notebookId: string;
@@ -79,7 +78,7 @@ export default function DeleteNotebookButton({
             onClick={handleDelete}
             disabled={isLoading}
           >
-            {isLoading ? <ButtonLoadingSpinner /> : "Yes, delete notebook"}
+            {isLoading ? <Spinner /> : "Yes, delete notebook"}
           </Button>
         </DialogFooter>
       </DialogContent>

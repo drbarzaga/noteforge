@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Logo } from "../logo";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-
+import { Spinner } from "@/components/ui/spinner";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,7 +17,7 @@ import {
   FormControl,
   FormMessage,
 } from "../ui/form";
-import ButtonLoadingSpinner from "../button-loading-spinner";
+
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 
@@ -94,7 +94,7 @@ export default function ForgotPasswordForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoadingSpinner /> : "Send Reset Link"}
+              {isLoading ? <Spinner /> : "Send Reset Link"}
             </Button>
           </div>
 

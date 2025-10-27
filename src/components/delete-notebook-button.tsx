@@ -57,7 +57,7 @@ export default function DeleteNotebookButton({
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button variant="destructive">
           <Trash2 className="size-4" />
         </Button>

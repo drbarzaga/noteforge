@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Suspense } from "react";
 import { SearchForm } from "@/components/search-form";
 import {
   Sidebar,
@@ -40,7 +41,13 @@ export async function AppSidebar({
           <span className="text-2xl font-bold">NoteForge</span>
         </Link>
 
-        <SearchForm />
+        <Suspense
+          fallback={
+            <div className="h-8 w-full bg-muted animate-pulse rounded-md" />
+          }
+        >
+          <SearchForm />
+        </Suspense>
       </SidebarHeader>
       <SidebarContent className="gap-0">
         <SidebarItems data={data} />

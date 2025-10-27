@@ -3,6 +3,8 @@ import PageWrapper from "@/components/page-wrapper";
 import RichTextEditor from "@/components/rich-text-editor";
 import { JSONContent } from "@tiptap/react";
 
+export const dynamic = "force-dynamic";
+
 type Params = Promise<{ notebookId: string; noteId: string }>;
 
 export default async function NotePage({ params }: { params: Params }) {

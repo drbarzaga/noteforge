@@ -6,6 +6,8 @@ import NotebooksEmptyState from "@/components/notebooks-empty-state";
 
 const breadcrumbs = [{ label: "Notebooks", href: "/notebooks" }];
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   const notebooks = await getNotebooks();
 

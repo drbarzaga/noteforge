@@ -5,6 +5,8 @@ import NoteCard from "@/components/note-card";
 import NotesEmptyState from "@/components/notes-empty-state";
 import CreateNoteButton from "@/components/create-note-button";
 
+export const dynamic = "force-dynamic";
+
 type Params = Promise<{ notebookId: string }>;
 
 export default async function NotebookPage({ params }: { params: Params }) {

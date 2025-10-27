@@ -1,10 +1,12 @@
 import ResetPasswordForm from "@/components/forms/reset-password-form";
-import React from "react";
+import React, { Suspense } from "react";
 
 export default function ResetPasswordPage() {
   return (
     <section className="flex min-h-screen bg-zinc-50 px-4 py-16 md:py-32 dark:bg-transparent">
-      <ResetPasswordForm />
+      <Suspense>
+        <ResetPasswordForm />
+      </Suspense>
     </section>
   );
 }

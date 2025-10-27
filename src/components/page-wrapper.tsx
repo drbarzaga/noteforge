@@ -10,10 +10,15 @@ import {
 } from "@/components/ui/breadcrumb";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Separator } from "./ui/separator";
-import LogoutButton from "./logout-button";
 import ModeToggle from "./mode-toggle";
+import { NavUser } from "./nav-user";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 interface PageWrapperProps {
+  title?: string;
+  renderActions?: React.ReactNode; // Optional prop for additional actions
   children: React.ReactNode;
   breadcrumbs: {
     label: string;
@@ -21,10 +26,20 @@ interface PageWrapperProps {
   }[];
 }
 
-export default function PageWrapper({
+export default async function PageWrapper({
+  title,
+  renderActions,
   children,
   breadcrumbs,
 }: PageWrapperProps) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/");
+  }
+
   return (
     <div className="flex flex-col">
       <header className="flex h-16 shrink-0 items-center gap-2 px-4 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
@@ -59,12 +74,24 @@ export default function PageWrapper({
 
           <div className="flex items-center gap-4">
             <ModeToggle />
-            <LogoutButton />
+            <NavUser
+              user={{
+                name: session.user.name,
+                email: session.user.email,
+                avatar: session.user.image || "",
+              }}
+            />
           </div>
         </div>
       </header>
 
-      <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
+      <div className="flex flex-1 flex-col gap-4 p-4">
+        <div className="flex items-center justify-between">
+          {title && <h1 className="text-2xl font-semibold">{title}</h1>}
+          {renderActions}
+        </div>
+        {children}
+      </div>
     </div>
   );
 }

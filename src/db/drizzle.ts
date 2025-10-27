@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { drizzle } from "drizzle-orm/neon-http";
-import { schema } from "./schema";
+import { schema } from "./schema/auth";
 
 config({ path: ".env" }); // or .env.local
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, FileText } from "lucide-react";
 
 import { SearchForm } from "@/components/search-form";
 
@@ -86,7 +86,10 @@ export async function AppSidebar({
                     {item.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild isActive={item.isActive}>
-                          <Link href={item.url}>{item.title}</Link>
+                          <Link href={item.url}>
+                            <FileText className="size-4" />
+                            {item.title}
+                          </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     ))}

@@ -42,19 +42,20 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 
 ## Tools Used
 
-- **Next.js** - React framework for production
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Accessible UI components
-- **Motion** - Animation library
-- **next-themes** - Theme switching
-- **Lucide React** - Icon library
-- **Tailark** - Tailwind CSS components and blocks
-- **Better Auth** - Authentication solution
-- **React Hook Form** - Build forms in React using React Hook Form
-- **Zod** - TypeScript-first schema validation
-- **Drizzle ORM** - Type-safe ORM for SQL databases
-- **PostgreSQL** - Relational database
-- **Resend** - Email delivery service
-- **React Emails** - Build emails with React
-- **TipTap** - Rich text editor framework
+- **[Next.js](https://nextjs.org/)** - React framework for production
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible UI components
+- **[Motion](https://www.framer.com/motion/)** - Animation library
+- **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme switching
+- **[Lucide React](https://lucide.dev/)** - Icon library
+- **[Tailark](https://tailark.vercel.app/)** - Tailwind CSS components and blocks
+- **[Better Auth](https://www.better-auth.com/)** - Authentication solution
+- **[React Hook Form](https://react-hook-form.com/)** - Build forms in React using React Hook Form
+- **[Zod](https://zod.dev/)** - TypeScript-first schema validation
+- **[Drizzle ORM](https://orm.drizzle.team/)** - Type-safe ORM for SQL databases
+- **[PostgreSQL](https://www.postgresql.org/)** - Relational database
+- **[Resend](https://resend.com/)** - Email delivery service
+- **[React Emails](https://react.email/)** - Build emails with React
+- **[TipTap](https://tiptap.dev/)** - Rich text editor framework
+- **[Nuqs](https://nuqs.dev/)** - Type-safe search params state manager for React

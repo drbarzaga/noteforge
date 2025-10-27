@@ -45,7 +45,7 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **[Next.js](https://nextjs.org/)** - React framework for production
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Radix UI](https://www.radix-ui.com/)** - Accessible UI components
+- **[Shadcn UI](https://ui.shadcn.com/)** - Accessible UI components
 - **[Motion](https://www.framer.com/motion/)** - Animation library
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme switching
 - **[Lucide React](https://lucide.dev/)** - Icon library
@@ -60,3 +60,4 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **[TipTap](https://tiptap.dev/)** - Rich text editor framework
 - **[Nuqs](https://nuqs.dev/)** - Type-safe search params state manager for React
 - **[Tweakcss](https://tweakcss.com/)** - Theme editor and generator
+- **[Space Man React Theme Animation](https://www.npmjs.com/package/@space-man/react-theme-animation)** - React theme switching with smooth view transition animations

@@ -3,10 +3,7 @@ import Notebooks from "@/components/notebooks";
 import { getNotebooks } from "@/actions/notebooks";
 import CreateNotebookButton from "@/components/create-notebook-button";
 
-const breadcrumbs = [
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "Home", href: "/dashboard/home" },
-];
+const breadcrumbs = [{ label: "Notebooks", href: "/notebooks" }];
 
 export default async function DashboardPage() {
   const notebooks = await getNotebooks();

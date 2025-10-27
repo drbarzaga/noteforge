@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db/drizzle";
-import { notebooks } from "@/db/schema/notebooks";
+import { notebooks } from "@/db/schema";
 import { auth } from "@/lib/auth";
 import { InsertNotebook } from "@/types";
 import { desc, eq } from "drizzle-orm";
@@ -35,17 +35,20 @@ export const getNotebooks = async () => {
       };
     }
 
-    const notebooksList = await db
-      .select()
-      .from(notebooks)
-      .where(eq(notebooks.userId, userId))
-      .orderBy(desc(notebooks.updatedAt));
+    const notebooksList = await db.query.notebooks.findMany({
+      where: eq(notebooks.userId, userId),
+      orderBy: [desc(notebooks.createdAt)],
+      with: {
+        notes: true, // Include related notes
+      },
+    });
 
     return {
       success: true,
       notebooks: notebooksList,
     };
   } catch (error) {
+    console.log("Error fetching notebooks:", error);
     return {
       success: false,
       message: (error as Error).message || "Failed to fetch notebooks",
@@ -56,11 +59,12 @@ export const getNotebooks = async () => {
 // Function to get a specific notebook by its ID
 export const getNotebookById = async (notebookId: string) => {
   try {
-    const notebook = await db
-      .select()
-      .from(notebooks)
-      .where(eq(notebooks.id, notebookId))
-      .limit(1);
+    const notebook = await db.query.notebooks.findFirst({
+      where: eq(notebooks.id, notebookId),
+      with: {
+        notes: true, // Include related notes
+      },
+    });
 
     if (!notebook) {
       return {

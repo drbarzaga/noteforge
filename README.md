@@ -57,3 +57,4 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **PostgreSQL** - Relational database
 - **Resend** - Email delivery service
 - **React Emails** - Build emails with React
+- **TipTap** - Rich text editor framework

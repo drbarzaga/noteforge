@@ -56,7 +56,7 @@ export default function LoginForm() {
       const response = await signIn(email, password);
       if (response.success) {
         toast.success(response.message);
-        router.push("/dashboard");
+        router.push("/notebooks");
       } else {
         toast.error(response.message);
       }
@@ -72,7 +72,7 @@ export default function LoginForm() {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/dashboard",
+        callbackURL: "/notebooks",
       });
     } catch (error) {
       console.error("Google Sign-In error:", error);

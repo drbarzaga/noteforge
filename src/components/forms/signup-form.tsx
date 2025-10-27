@@ -85,7 +85,7 @@ export default function SignUpForm() {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/dashboard",
+        callbackURL: "/notebooks",
       });
     } catch (error) {
       console.error("Google Sign-In error:", error);

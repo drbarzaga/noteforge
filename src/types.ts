@@ -5,3 +5,5 @@ export type Notebook = typeof notebooks.$inferSelect;
 export type InsertNotebook = typeof notebooks.$inferInsert;
 
 export type Note = typeof notes.$inferSelect;
+
+export type InsertNote = typeof notes.$inferInsert;

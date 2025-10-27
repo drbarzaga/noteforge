@@ -11,6 +11,7 @@ import { NotebookWithNotes } from "@/types";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import DeleteNotebookButton from "./delete-notebook-button";
+import { NotebookIcon } from "lucide-react";
 
 interface NotebookCardProps {
   notebook: NotebookWithNotes;
@@ -21,8 +22,12 @@ export default function NotebookCard({ notebook }: NotebookCardProps) {
     <Card>
       <CardHeader>
         <CardTitle>{notebook.name}</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-        <CardAction>Card Action</CardAction>
+        <CardDescription>
+          <small>Created {notebook.createdAt.toLocaleDateString()}</small>
+        </CardDescription>
+        <CardAction>
+          <NotebookIcon className="size-4" />
+        </CardAction>
       </CardHeader>
       <CardContent>
         <p>

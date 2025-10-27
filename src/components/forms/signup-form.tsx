@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LogoIcon } from "../logo";
+import { Logo } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import ButtonLoadingSpinner from "../button-loading-spinner";
@@ -102,7 +102,7 @@ export default function SignUpForm() {
         <div className="p-8 pb-6">
           <div>
             <Link href="/" aria-label="go home">
-              <LogoIcon />
+              <Logo className="size-10" />
             </Link>
             <h1 className="mb-1 mt-4 text-xl font-semibold">
               Create a NoteForge Account

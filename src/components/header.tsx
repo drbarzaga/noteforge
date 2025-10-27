@@ -46,6 +46,7 @@ export const HeroHeader = () => {
                 className="flex items-center space-x-2"
               >
                 <Logo />
+                <span className="text-2xl font-bold">NoteForge</span>
               </Link>
 
               <button

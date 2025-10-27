@@ -2,6 +2,7 @@ import PageWrapper from "@/components/page-wrapper";
 import Notebooks from "@/components/notebooks";
 import { getNotebooks } from "@/actions/notebooks";
 import CreateNotebookButton from "@/components/create-notebook-button";
+import NotebooksEmptyState from "@/components/notebooks-empty-state";
 
 const breadcrumbs = [{ label: "Notebooks", href: "/notebooks" }];
 
@@ -18,7 +19,9 @@ export default async function DashboardPage() {
         Array.isArray(notebooks.notebooks) && notebooks.notebooks.length > 0 ? (
           <Notebooks notebooks={notebooks.notebooks} />
         ) : (
-          <div>No notebooks found.</div>
+          <div className="flex justify-center items-center min-h-96 h-full">
+            <NotebooksEmptyState />
+          </div>
         )
       ) : (
         <div>Failed to load notebooks.</div>

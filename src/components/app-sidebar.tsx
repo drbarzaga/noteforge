@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/sidebar";
 import { getNotebooks } from "@/actions/notebooks";
 import Link from "next/link";
+import Image from "next/image";
+import { Logo } from "./logo";
 
 export async function AppSidebar({
   ...props
@@ -47,10 +49,15 @@ export async function AppSidebar({
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher
+        {/* <VersionSwitcher
           versions={data.versions}
           defaultVersion={data.versions[0]}
-        />
+        /> */}
+        <Link href="/notebooks" className="flex items-center space-x-2">
+          <Logo className="size-10" />
+          <span className="text-2xl font-bold">NoteForge</span>
+        </Link>
+
         <SearchForm />
       </SidebarHeader>
       <SidebarContent className="gap-0">

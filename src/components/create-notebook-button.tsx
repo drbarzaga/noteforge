@@ -57,7 +57,7 @@ export default function CreateNotebookButton() {
     try {
       startLoading();
 
-      const userId = await (await authClient.getSession()).data?.user.id;
+      const userId = (await authClient.getSession()).data?.user.id;
       if (!userId) {
         toast.error("You must be logged in to create a notebook.");
         return;

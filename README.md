@@ -59,3 +59,4 @@ Supercharge your workflow with NoteForge — the smartest way to capture, organi
 - **[React Emails](https://react.email/)** - Build emails with React
 - **[TipTap](https://tiptap.dev/)** - Rich text editor framework
 - **[Nuqs](https://nuqs.dev/)** - Type-safe search params state manager for React
+- **[Tweakcss](https://tweakcss.com/)** - Theme editor and generator

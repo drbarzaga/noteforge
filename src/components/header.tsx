@@ -8,12 +8,12 @@ import { cn } from "@/lib/utils";
 import { useScroll } from "motion/react";
 import ModeToggle from "./mode-toggle";
 
-const menuItems = [
-  { name: "Features", href: "#link" },
-  { name: "Solution", href: "#link" },
-  { name: "Pricing", href: "#link" },
-  { name: "About", href: "#link" },
-];
+interface MenuItem {
+  name: string;
+  href: string;
+}
+
+const menuItems: MenuItem[] = [];
 
 export const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false);

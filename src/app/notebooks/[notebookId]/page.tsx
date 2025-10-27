@@ -1,6 +1,7 @@
 import React from "react";
 import PageWrapper from "@/components/page-wrapper";
 import { getNotebookById } from "@/actions/notebooks";
+import NotebookCard from "@/components/notebook-card";
 
 type Params = Promise<{ notebookId: string }>;
 
@@ -19,7 +20,7 @@ export default async function NotebookPage({ params }: { params: Params }) {
 
   return (
     <PageWrapper title={notebook.notebook?.name} breadcrumbs={breadcrumbs}>
-      NotebookPage
+      Notebook Page
     </PageWrapper>
   );
 }

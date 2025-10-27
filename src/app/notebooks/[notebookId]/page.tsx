@@ -24,7 +24,7 @@ export default async function NotebookPage({ params }: { params: Params }) {
     <PageWrapper
       title={notebook.notebook?.name}
       breadcrumbs={breadcrumbs}
-      renderActions={<CreateNoteButton />}
+      renderActions={<CreateNoteButton notebookId={notebookId} />}
     >
       {notebook.success && notebook.notebook ? (
         notebook.notebook.notes.length > 0 ? (
@@ -35,7 +35,7 @@ export default async function NotebookPage({ params }: { params: Params }) {
           </div>
         ) : (
           <div className="flex justify-center items-center min-h-96 h-full">
-            <NotesEmptyState />
+            <NotesEmptyState notebookId={notebookId} />
           </div>
         )
       ) : (

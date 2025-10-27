@@ -9,7 +9,11 @@ import {
 import { NotebookText } from "lucide-react";
 import CreateNoteButton from "./create-note-button";
 
-export default function NotesEmptyState() {
+interface NotesEmptyStateProps {
+  notebookId: string;
+}
+
+export default function NotesEmptyState({ notebookId }: NotesEmptyStateProps) {
   return (
     <Empty>
       <EmptyHeader>
@@ -23,7 +27,7 @@ export default function NotesEmptyState() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <CreateNoteButton />
+        <CreateNoteButton notebookId={notebookId} />
       </EmptyContent>
     </Empty>
   );

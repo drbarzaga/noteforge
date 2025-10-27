@@ -8,6 +8,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { FileText, PencilIcon, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface NoteCardProps {
   note: Note;
@@ -19,9 +22,11 @@ export default function NoteCard({ note }: NoteCardProps) {
       <CardHeader>
         <CardTitle>{note.title}</CardTitle>
         <CardDescription>
-          Created {note.createdAt.toLocaleDateString()}
+          <small>Created {note.createdAt.toLocaleDateString()}</small>
         </CardDescription>
-        <CardAction>Card Action</CardAction>
+        <CardAction>
+          <FileText className="size-4" />
+        </CardAction>
       </CardHeader>
       <CardContent>
         {/* <p>
@@ -31,10 +36,17 @@ export default function NoteCard({ note }: NoteCardProps) {
             </p> */}
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
-        {/* <Link href={`/notebooks/${notebook.id}`}>
-              <Button>View</Button>
-            </Link>
-            <DeleteNotebookButton notebookId={notebook.id} /> */}
+        <Link href={`/notebooks/${note.notebookId}/notes/${note.id}`}>
+          <Button>
+            <PencilIcon className="size-4" />
+            Edit
+          </Button>
+        </Link>
+        <Button variant="destructive">
+          <Trash2 className="size-4" />
+          Delete
+        </Button>
+        {/* <DeleteNotebookButton notebookId={notebook.id} /> */}
       </CardFooter>
     </Card>
   );

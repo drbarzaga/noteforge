@@ -60,6 +60,7 @@ export default function DeleteNotebookButton({
       <DialogTrigger asChild>
         <Button variant="destructive">
           <Trash2 className="size-4" />
+          Delete
         </Button>
       </DialogTrigger>
       <DialogContent>

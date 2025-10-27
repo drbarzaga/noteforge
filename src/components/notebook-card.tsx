@@ -11,7 +11,7 @@ import { NotebookWithNotes } from "@/types";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import DeleteNotebookButton from "./delete-notebook-button";
-import { NotebookIcon } from "lucide-react";
+import { EyeIcon, NotebookIcon, PencilIcon } from "lucide-react";
 
 interface NotebookCardProps {
   notebook: NotebookWithNotes;
@@ -21,12 +21,17 @@ export default function NotebookCard({ notebook }: NotebookCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{notebook.name}</CardTitle>
+        <CardTitle className="flex items-center">
+          <NotebookIcon className="size-4 mr-2" />
+          {notebook.name}
+        </CardTitle>
         <CardDescription>
           <small>Created {notebook.createdAt.toLocaleDateString()}</small>
         </CardDescription>
         <CardAction>
-          <NotebookIcon className="size-4" />
+          <Button variant="ghost">
+            <PencilIcon className="size-4" />
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
@@ -38,7 +43,10 @@ export default function NotebookCard({ notebook }: NotebookCardProps) {
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
         <Link href={`/notebooks/${notebook.id}`}>
-          <Button>View</Button>
+          <Button>
+            <EyeIcon className="size-4" />
+            View
+          </Button>
         </Link>
         <DeleteNotebookButton notebookId={notebook.id} />
       </CardFooter>

@@ -3,25 +3,25 @@
 import * as React from "react";
 
 import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useThemeAnimation } from "@space-man/react-theme-animation";
 
 import { Button } from "@/components/ui/button";
 
 export default function ModeToggle() {
-  const { setTheme, resolvedTheme } = useTheme();
-
-  const toggleTheme = React.useCallback(() => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  }, [resolvedTheme, setTheme]);
+  const { theme, toggleTheme, ref } = useThemeAnimation();
 
   return (
     <Button
+      ref={ref}
       variant="ghost"
-      className="group/toggle h-8 w-8 px-0"
+      className="group/toggle h-8 w-8 px-0 cursor-pointer"
       onClick={toggleTheme}
     >
-      <SunIcon className="hidden [html.dark_&]:block" />
-      <MoonIcon className="hidden [html.light_&]:block" />
+      {theme === "dark" ? (
+        <SunIcon className="[html.dark_&]:block" />
+      ) : (
+        <MoonIcon className="[html.light_&]:block" />
+      )}
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { LogoIcon } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import ButtonLoading from "../button-loading";
+import ButtonLoadingSpinner from "../button-loading-spinner";
 
 import {
   Form,
@@ -20,8 +20,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLoading } from "@/hooks/useLoading";
-import { signIn } from "@/actions/auth";
-import GoogleButton from "../google-button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
@@ -140,7 +138,7 @@ export default function ResetPasswordForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Reset Password"}
+              {isLoading ? <ButtonLoadingSpinner /> : "Reset Password"}
             </Button>
           </div>
         </div>

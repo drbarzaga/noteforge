@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { LogoIcon } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import ButtonLoading from "../button-loading";
+import ButtonLoadingSpinner from "../button-loading-spinner";
 
 import {
   Form,
@@ -154,7 +154,7 @@ export default function LoginForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Sign In"}
+              {isLoading ? <ButtonLoadingSpinner /> : "Sign In"}
             </Button>
           </div>
         </div>

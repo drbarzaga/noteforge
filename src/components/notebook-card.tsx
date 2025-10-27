@@ -10,7 +10,7 @@ import {
 import { NotebookWithNotes } from "@/types";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Trash2 } from "lucide-react";
+import DeleteNotebookButton from "./delete-notebook-button";
 
 interface NotebookCardProps {
   notebook: NotebookWithNotes;
@@ -35,9 +35,7 @@ export default function NotebookCard({ notebook }: NotebookCardProps) {
         <Link href={`/notebooks/${notebook.id}`}>
           <Button>View</Button>
         </Link>
-        <Button variant="destructive">
-          <Trash2 className="size-4" />
-        </Button>
+        <DeleteNotebookButton notebookId={notebook.id} />
       </CardFooter>
     </Card>
   );

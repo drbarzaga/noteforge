@@ -17,8 +17,7 @@ import {
   FormControl,
   FormMessage,
 } from "../ui/form";
-import ButtonLoading from "../button-loading";
-import { forgetPassword } from "@/actions/auth";
+import ButtonLoadingSpinner from "../button-loading-spinner";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 
@@ -95,7 +94,7 @@ export default function ForgotPasswordForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Send Reset Link"}
+              {isLoading ? <ButtonLoadingSpinner /> : "Send Reset Link"}
             </Button>
           </div>
 

@@ -27,7 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLoading } from "@/hooks/useLoading";
 import { toast } from "sonner";
-import ButtonLoading from "./button-loading";
+import ButtonLoadingSpinner from "./button-loading-spinner";
 import { createNotebook } from "@/actions/notebooks";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
@@ -124,7 +124,7 @@ export default function CreateNotebookButton() {
               )}
             />
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Create Notebook"}
+              {isLoading ? <ButtonLoadingSpinner /> : "Create Notebook"}
             </Button>
           </form>
         </Form>

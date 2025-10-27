@@ -4,7 +4,7 @@ import Link from "next/link";
 import { LogoIcon } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import ButtonLoading from "../button-loading";
+import ButtonLoadingSpinner from "../button-loading-spinner";
 
 import {
   Form,
@@ -199,7 +199,7 @@ export default function SignUpForm() {
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
-              {isLoading ? <ButtonLoading /> : "Create Account"}
+              {isLoading ? <ButtonLoadingSpinner /> : "Create Account"}
             </Button>
           </div>
         </div>

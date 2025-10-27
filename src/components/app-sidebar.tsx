@@ -2,7 +2,7 @@ import * as React from "react";
 import { ChevronRight } from "lucide-react";
 
 import { SearchForm } from "@/components/search-form";
-import { VersionSwitcher } from "@/components/version-switcher";
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/sidebar";
 import { getNotebooks } from "@/actions/notebooks";
 import Link from "next/link";
-import Image from "next/image";
 import { Logo } from "./logo";
 
 export async function AppSidebar({

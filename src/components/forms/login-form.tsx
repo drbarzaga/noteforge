@@ -6,6 +6,7 @@ import { Logo } from "../logo";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Spinner } from "@/components/ui/spinner";
+import { Badge } from "../ui/badge";
 
 import {
   Form,
@@ -40,6 +41,8 @@ export default function LoginForm() {
   const { isLoading, startLoading, stopLoading } = useLoading();
 
   const router = useRouter();
+
+  const lastMethod = authClient.getLastUsedLoginMethod();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -100,6 +103,7 @@ export default function LoginForm() {
           <div className="mt-6 grid grid-cols-1">
             <GoogleButton
               text="Sign in with Google"
+              lastMethod={lastMethod === "google"}
               onClick={signInWithGoogle}
             />
           </div>
@@ -113,7 +117,12 @@ export default function LoginForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <div className="flex items-center justify-between">
+                      <FormLabel>Email</FormLabel>
+                      {lastMethod === "email" && (
+                        <Badge className="ml-2">Last used</Badge>
+                      )}
+                    </div>
                     <FormControl>
                       <Input placeholder="you@example.com" {...field} />
                     </FormControl>
